@@ -1,13 +1,13 @@
 import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { auth, provider } from "../firebase";
 import { selectUserName, selectUserEmail, selectUserPhoto, setUserLoginDetails, setSingOutState } from "../features/user/userSlice";
 import { useEffect } from "react";
 
 const Header = (props) => {
     const dispatch = useDispatch();
-    const history = useHistory();
+    const history = useNavigate();
     const userName = useSelector(selectUserName);
     const userPhoto = useSelector(selectUserPhoto);
 
@@ -15,7 +15,7 @@ const Header = (props) => {
         auth.onAuthStateChanged(async (user) => {
             if(user) {
                 setUser(user)
-                history.push('/home')
+                history('/home');
             }
         })
     }, [userName])
@@ -24,13 +24,14 @@ const Header = (props) => {
         if(!userName){
             auth.signInWithPopup(provider).then((result) => {
                 setUser(result.user);
+                history('/home');
             }).catch((error) => {
                 alert(error.message);
             });
         } else if(userName){
             auth.signOut().then(() => {
                 dispatch(setSingOutState());
-                history.push('/');
+                history('/');
             })
             .catch((err) => {
                 alert(err.message)
@@ -52,7 +53,7 @@ const Header = (props) => {
                 <img src="/images/logo.svg" alt="Disney+" />
             </Logo>
 
-            {!userName ? (<Login onClick={handleAuth}>Login</Login>) 
+            {!userName ? (<Login style={{cursor:"pointer"}} onClick={handleAuth}>Login</Login>) 
             : (
             <>
             <NavMenu>
