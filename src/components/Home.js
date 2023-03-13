@@ -1,3 +1,4 @@
+/* eslint-disable */ 
 import styled from "styled-components";
 import ImgSlider from "./ImgSlider";
 import NewDisney from "./NewDisney";
