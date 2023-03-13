@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { auth, provider } from "../firebase";
-import { selectUserName, selectUserEmail, selectUserPhoto, setUserLoginDetails, setSingOutState } from "../features/user/userSlice";
+import { selectUserName, selectUserPhoto, setUserLoginDetails, setSingOutState } from "../features/user/userSlice";
 import { useEffect } from "react";
 
 const Header = (props) => {
@@ -61,23 +61,23 @@ const Header = (props) => {
                     <img src="/images/home-icon.svg" alt="HOME" />
                     <span>HOME</span>
                 </a>
-                <a href="">
+                <a href="#">
                     <img src="/images/search-icon.svg" alt="HOME" />
                     <span>SEARCH</span>
                 </a>
-                <a href="">
+                <a href="#">
                     <img src="/images/watchlist-icon.svg" alt="HOME" />
                     <span>WATCHLIST</span>
                 </a>
-                <a href="">
+                <a href="#">
                     <img src="/images\original-icon.svg" alt="HOME" />
                     <span>ORIGINALS</span>
                 </a>
-                <a href="">
+                <a href="#">
                     <img src="/images\movie-icon.svg" alt="HOME" />
                     <span>MOVIES</span>
                 </a>
-                <a href="">
+                <a href="#">
                     <img src="/images\series-icon.svg" alt="HOME" />
                     <span>SERIES</span>
                 </a>
